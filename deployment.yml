@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: christmas-apps-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: christmas-apps-front
+  template:
+    metadata:
+      labels:
+        app: christmas-apps-front
+    spec:
+      containers:
+      - name: christmas-apps-front
+        image: ghcr.io/nmotoki-dev/christmass-apps-container-registry/christmas-apps:latest
+        ports:
+        - containerPort: 80
